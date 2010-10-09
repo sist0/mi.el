@@ -1,0 +1,17 @@
+(require 'mi)
+(setq mi-use-dls-synth t)
+(mi-setup)
+
+(defun cremation () ;)
+  (let ((mi-bpm 58)
+        (lead-notes (mi-scale 'C4 'aeolian))
+        (bass-notes (mi-scale 'C3 'aeolian)))
+    (mi-play (mi-random lead-notes) 0 4)
+    (mi-play (mi-random bass-notes) 0 4 3 40)
+    (if (mi-random '(t t t t nil))
+        (mi-play (mi-random lead-notes) (mi-random '(1 2 3)) 4))
+    (if (mi-random '(t nil))
+        (mi-play (mi-random lead-notes) (mi-random '(1.5 2.5 3.5)) 4))
+    (mi-callback 4 'cremation)))
+
+ (cremation)
